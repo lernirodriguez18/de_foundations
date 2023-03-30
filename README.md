@@ -1,5 +1,4 @@
 # Trabajo Práctico Final Foundations
-### ITBA - Cloud Data Engineering
 
 Bienvenido al TP Final de la sección Foundations del Módulo 1 de la Diplomatura en Cloud Data Engineering del ITBA.
 
@@ -10,21 +9,6 @@ En este trabajo práctico vas a poner en práctica los conocimientos adquiridos 
 3. Python 3.7+.
 4. Docker.
 
-Para realizar este TP vamos a utlizar la plataforma Github Classrooms donde cada alumno tendrá acceso a un repositorio de Git privado hosteado en la plataforma Github.
-
-En cada repositorio, en la sección de [Issues](https://guides.github.com/features/issues/) (tab a la derecha de Code en las tabs de navegación en la parte superior de la pantalla) podrás ver que hay creado un issue por cada ejercicio. 
-El objetivo es resolver ejercicio/issue creando un branch y un pull request asociado. 
-
-Debido a que cada ejercico utiliza el avance realizado en el issue anterior, cada nuevo branch debe partir del branch del ejercicio anterior.
-
-Para poder realizar llevar a cabo esto puede realizarlo desde la web de Github pero recomendamos hacerlo con la aplicación de línea de comando de git o con la aplicación de [Github Desktop](https://desktop.github.com/) (interfaz visual) o [Github CLI](https://cli.github.com/) (interfaz de línea de comando).
-
-La idea de utilizar Github es replicar el ambiente de un proyecto real donde las tareas se deberían definir como issues y cada nuevo feature se debería crear con un Pull Request correspondiente que lo resuelve. 
-https://guides.github.com/introduction/flow/
-https://docs.github.com/en/github/getting-started-with-github/quickstart/github-flow
-
-**MUY IMPORTANTE: parte importante del Trabajo Práctico es aprender a buscar en Google para poder resolver de manera exitosa el trabajo práctico**
-
 ## Ejercicios
 
 ### Ejercicio 1: Elección de dataset y preguntas
@@ -33,11 +17,6 @@ Elegir un dataset de la [wiki de PostgreSQL ](https://wiki.postgresql.org/wiki/S
 
 Crear un Pull Request con un archivo en [formato markdown](https://guides.github.com/features/mastering-markdown/) expliando el dataset elegido y  una breve descripción de al menos 4 preguntas de negocio que se podrían responder teniendo esos datos en una base de datos relacional de manera que sean consultables con lenguaje SQL.
 
-
-Otras fuentes de datos abiertos sugeridas:
-https://catalog.data.gov/dataset
-https://datasetsearch.research.google.com/
-https://www.kaggle.com/datasets
 
 ## Ejercicio 2: Crear container de la DB
 
@@ -52,6 +31,7 @@ Se debe exponer el puerto estándar de esa base de datos para que pueda recibir 
 Crear un script de bash que ejecute uno o varios scripts SQL que creen las tablas de la base de datos en la base PostgreSQL creada en el container del ejercicio anterior.
 
 Se deben solamente crear las tablas, primary keys, foreign keys y otras operaciones de [DDL](https://en.wikipedia.org/wiki/Data_definition_language) sin crear o insertar los datos. 
+
 
 ## Ejercicio 4: Popular la base de datos
 
@@ -70,6 +50,7 @@ Para pasar los archivos con los datos, se puede montar un volumen (argumento `-v
 Escribir un script de Python que realice al menos 5 consultas SQL que puedan agregar valor al negocio y muestre por pantalla un reporte con los resultados.
 
 Este script de reporting debe correrse mediante una imagen de Docker con `docker run` del mismo modo que el script del ejercicio 4.
+
 
 ## Ejercicio 6: Documentación y ejecución end2end
 
@@ -99,4 +80,4 @@ El contenido del script es el siguiente
 - Inicializo mi imagen de python3 y creo un volumen para copiar los archivos .py y el dataset `docker run -d --name upload_data -v "$PWD"/data:/usr/src/myapp -w /usr/src/myapp python3 sleep 1000 `
 - Conecto mi contenedor de python a la red de postgres para poder comunicarlos `docker network connect tpf-foundations-lernirodriguez18_foundations_net upload_data`
 - Ejecuto mi script de python para cargar las tablas de la db `docker exec -it upload_data bash -c "python3 upload_data.py"`
-- Ejecuto mi script de python para resonder las preguntas de negocio `docker exec -it upload_data bash -c "python3 consultas_negocio.py"`
+- Ejecuto mi script de python para responder las preguntas de negocio `docker exec -it upload_data bash -c "python3 consultas_negocio.py"`
