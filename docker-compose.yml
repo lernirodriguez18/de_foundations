@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  db-postgres:
+    image: "postgres:12.10"
+    environment:
+      POSTGRES_USER: foundations
+      POSTGRES_PASSWORD: foundations
+      POSTGRES_DB: foundations_db
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - foundations_net
+    container_name: postgres_service
+    
+
+networks:
+  foundations_net:
+    driver: bridge
+
+volumes:
+  db-data:
